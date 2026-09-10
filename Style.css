@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+}
+
+header {
+  background: white;
+  padding: 25px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+  margin: 0 0 20px;
+}
+
+nav a {
+  margin: 0 8px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto;
+}
+
+main h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.san-pham-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.san-pham {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
+}
+
+.san-pham img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+
+.san-pham h3 {
+  margin: 15px 0 10px;
+}
+
+.san-pham strong {
+  font-size: 18px;
+}
+
+.san-pham button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #333;
+  color: white;
+  cursor: pointer;
+}
+
+.san-pham button:hover {
+  background: #555;
+}
+
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  background: white;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .san-pham-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .san-pham-container {
+    grid-template-columns: 1fr;
+  }
+}
