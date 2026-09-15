@@ -26,77 +26,315 @@ if (!$result) {
 
 <body>
 
-<!-- HEADER -->
-<nav class="navbar navbar-expand-lg bg-white shadow-sm">
+<!-- THANH THÔNG BÁO -->
+<div class="top-notice">
+    Giảm <strong>25.000đ</strong> phí ship cho đơn hàng trên <strong>600.000đ</strong>
+</div>
+
+
+<!-- HEADER CHÍNH -->
+<header class="main-header">
     <div class="container">
 
-        <!-- Logo / Tên cửa hàng -->
-        <a class="navbar-brand fw-bold" href="index.php">
-            🍊 TRÁI CÂY MIỀN NAM
+        <div class="header-content">
+
+            <!-- MENU -->
+<div class="menu-wrapper">
+
+    <!-- NÚT MỞ MENU -->
+    <button class="menu-button" type="button">
+        <span class="menu-icon">☰</span>
+        <span class="menu-text">MENU</span>
+    </button>
+
+
+    <!-- MENU XỔ BÊN TRÁI -->
+    <div class="side-menu">
+
+        <!-- TRANG CHỦ -->
+        <a href="index.php" class="side-menu-home">
+            <img src="images/home.png" alt="Trang chủ">
         </a>
 
-        <!-- Nút menu trên điện thoại -->
-        <button class="navbar-toggler" type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#mainNavbar"
-                aria-controls="mainNavbar"
-                aria-expanded="false"
-                aria-label="Mở menu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <!-- CÁC MỤC MENU -->
+        <a href="index.php">
+            TRANG CHỦ
+        </a>
 
-        <!-- Menu -->
-        <div class="collapse navbar-collapse" id="mainNavbar">
+        <a href="sanpham.php?category=trai-cay-viet-nam">
+            TRÁI CÂY VIỆT NAM
+        </a>
 
-            <ul class="navbar-nav ms-auto align-items-lg-center">
+        <a href="sanpham.php?category=trai-cay-nhap-khau">
+            TRÁI CÂY NHẬP KHẨU
+        </a>
 
-                <li class="nav-item">
-                    <a class="nav-link active" href="index.php">
-                        Trang chủ
-                    </a>
-                </li>
+        <a href="#trai-ngon-moi-ngay">
+            TRÁI NGON MỖI NGÀY
+        </a>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#san-pham">
-                        Sản phẩm
-                    </a>
-                </li>
+        <a href="#lien-he">
+            LIÊN HỆ
+        </a>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#gioi-thieu">
-                        Giới thiệu
-                    </a>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#lien-he">
-                        Liên hệ
-                    </a>
-                </li>
+        <!-- HỖ TRỢ -->
+        <div class="menu-support">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="giohang.php">
-                        🛒 Giỏ hàng
-                    </a>
-                </li>
+            <p>BẠN CẦN HỖ TRỢ</p>
 
-                <li class="nav-item ms-lg-2">
-                    <a class="btn btn-outline-success" href="dangnhap.php">
-                        Đăng nhập
-                    </a>
-                </li>
+            <!-- HOTLINE -->
+            <div class="support-item">
+                <img src="images/hotline.png" alt="Hotline">
+                <span>0123 456 789</span>
+            </div>
 
-                <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-                    <a class="btn btn-success" href="dangky.php">
-                        Đăng ký
-                    </a>
-                </li>
-
-            </ul>
+            <!-- EMAIL -->
+            <div class="support-item">
+                <img src="images/email.png" alt="Email">
+                <span>hello@traicaymiennam.com.vn</span>
+            </div>
 
         </div>
+
     </div>
+
+</div>
+
+            <!-- TÌM KIẾM -->
+            <form class="header-search" action="sanpham.php" method="GET">
+
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="Tìm kiếm sản phẩm..."
+                >
+
+            <button type="submit" class="search-button">
+                <img src="images/timkiem.png" alt="Tìm kiếm">
+            </button>
+
+            </form>
+
+            <!-- HOTLINE -->
+            <div class="header-action hotline">
+
+                <img 
+                src="images/hotline.png" 
+                alt="Hotline"
+                class="header-icon-img"
+                >
+
+    <div>
+        <small>Hotline</small>
+        <strong>0123 456 789</strong>
+    </div>
+
+</div>
+
+            <<!-- TÀI KHOẢN -->
+<div class="account-box">
+
+    <button class="account-button" type="button">
+
+        <img
+            src="images/taikhoan.png"
+            alt="Tài khoản"
+            class="header-icon-img"
+        >
+
+        <span>Tài khoản</span>
+
+    </button>
+
+
+    <!-- HỘP ĐĂNG NHẬP -->
+    <div class="account-dropdown">
+
+        <h4>ĐĂNG NHẬP TÀI KHOẢN</h4>
+
+        <p>Nhập email và mật khẩu của bạn:</p>
+
+        <form action="dangnhap.php" method="POST">
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+            >
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Mật khẩu"
+                required
+            >
+
+            <button type="submit" class="login-button">
+                ĐĂNG NHẬP
+            </button>
+
+        </form>
+
+        <div class="account-links">
+            <p>
+                Khách hàng mới?
+                <a href="dangky.php">Tạo tài khoản</a>
+            </p>
+
+            <p>
+                Quên mật khẩu?
+                <a href="#">Khôi phục mật khẩu</a>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+    <!-- GIỎ HÀNG -->
+    <a href="giohang.php" class="cart-header">
+
+    <div class="cart-icon-box">
+        <img
+            src="images/giohang.png"
+            alt="Giỏ hàng"
+            class="header-icon-img"
+        >
+
+        <span class="cart-count">0</span>
+    </div>
+
+    <span class="cart-text">Giỏ hàng</span>
+
+</a>
+
+<!-- THANH DANH MỤC -->
+<nav class="category-nav">
+
+    <div class="container">
+
+        <div class="category-content">
+
+            <!-- TRANG CHỦ -->
+            <a href="index.php" class="category-item active">
+                TRANG CHỦ
+            </a>
+
+            <!-- TRÁI CÂY VIỆT NAM -->
+            <a href="sanpham.php?category=trai-cay-viet-nam"
+               class="category-item">
+                TRÁI CÂY VIỆT NAM
+            </a>
+
+            <!-- TRÁI CÂY NHẬP KHẨU -->
+            <a href="sanpham.php?category=trai-cay-nhap-khau"
+               class="category-item">
+                TRÁI CÂY NHẬP KHẨU
+            </a>
+
+            <!-- TRÁI NGON MỖI NGÀY -->
+            <a href="#trai-ngon-moi-ngay"
+               class="category-item">
+                TRÁI NGON MỖI NGÀY
+            </a>
+
+            <!-- LIÊN HỆ -->
+            <a href="#lien-he"
+               class="category-item">
+                LIÊN HỆ
+            </a>
+
+        </div>
+
+    </div>
+
 </nav>
+
+<!-- BANNER / SLIDER -->
+<section class="home-banner">
+
+    <div id="fruitBanner"
+         class="carousel slide"
+         data-bs-ride="carousel">
+
+        <!-- CÁC CHẤM CHUYỂN SLIDE -->
+        <div class="carousel-indicators">
+
+            <button type="button"
+                    data-bs-target="#fruitBanner"
+                    data-bs-slide-to="0"
+                    class="active"
+                    aria-current="true"
+                    aria-label="Banner 1">
+            </button>
+
+            <button type="button"
+                    data-bs-target="#fruitBanner"
+                    data-bs-slide-to="1"
+                    aria-label="Banner 2">
+            </button>
+
+            <button type="button"
+                    data-bs-target="#fruitBanner"
+                    data-bs-slide-to="2"
+                    aria-label="Banner 3">
+            </button>
+
+        </div>
+
+
+        <!-- ẢNH BANNER -->
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="images/banner1.jpg"
+                     class="d-block w-100"
+                     alt="Trái cây tươi">
+            </div>
+
+            <div class="carousel-item">
+                <img src="images/banner2.jpg"
+                     class="d-block w-100"
+                     alt="Trái cây Việt Nam">
+            </div>
+
+            <div class="carousel-item">
+                <img src="images/banner3.jpg"
+                     class="d-block w-100"
+                     alt="Trái cây nhập khẩu">
+            </div>
+
+        </div>
+
+
+        <!-- NÚT TRÁI -->
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#fruitBanner"
+                data-bs-slide="prev">
+
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Trước</span>
+
+        </button>
+
+
+        <!-- NÚT PHẢI -->
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#fruitBanner"
+                data-bs-slide="next">
+
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Sau</span>
+
+        </button>
+
+    </div>
+
+</section>
 
 <!-- HERO BANNER -->
 <section class="hero-section">
@@ -116,7 +354,7 @@ if (!$result) {
                     chất lượng và có nguồn gốc rõ ràng.
                 </p>
 
-                <a href="#san-pham" class="btn btn-success btn-lg">
+                <a href="sanpham.php" class="btn btn-success btn-lg">
                     Mua ngay
                 </a>
             </div>
@@ -207,7 +445,7 @@ if (!$result) {
                     an toàn và thuận tiện cho khách hàng mỗi ngày.
                 </p>
 
-                <a href="#san-pham" class="btn btn-success">
+                <a href="sanpham.php" class="btn btn-success">
                     Xem sản phẩm
                 </a>
             </div>
@@ -292,7 +530,7 @@ if (!$result) {
             <div class="col-lg-4 mb-4 mb-lg-0">
                 <h5>Liên kết</h5>
                 <a href="index.php">Trang chủ</a>
-                <a href="#san-pham">Sản phẩm</a>
+                <a href="sanpham.php">Sản phẩm</a>
                 <a href="#gioi-thieu">Giới thiệu</a>
                 <a href="#lien-he">Liên hệ</a>
             </div>
@@ -309,7 +547,7 @@ if (!$result) {
         <hr>
 
         <p class="footer-bottom">
-            © 2026 Trái Cây Miền Nam. All rights reserved.
+           Copyright © 2026 Trái Cây Miền Nam. All rights reserved.
         </p>
     </div>
 </footer>
