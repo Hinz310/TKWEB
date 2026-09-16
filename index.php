@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 include "Ketnoi.php";
 
 $sql = "SELECT * FROM san_pham ORDER BY ma_san_pham DESC";
@@ -168,74 +171,130 @@ if (!$result) {
 
 
             <!-- TÀI KHOẢN -->
-            <div class="account-box">
+<div class="account-box">
 
-                <button
-                    class="account-button"
-                    type="button"
-                    aria-expanded="false"
-                >
+    <button
+        class="account-button"
+        type="button"
+        aria-expanded="false"
+    >
 
-                    <img
-                        src="images/taikhoan.png"
-                        alt=""
-                        class="header-icon-img"
-                    >
+        <img
+            src="images/taikhoan.png"
+            alt=""
+            class="header-icon-img"
+        >
 
-                    <span>Tài khoản</span>
+        <span>
+            <?php
+            if (isset($_SESSION["ma_nguoi_dung"])) {
+                echo htmlspecialchars($_SESSION["ho_ten"]);
+            } else {
+                echo "Tài khoản";
+            }
+            ?>
+        </span>
 
-                </button>
-
-
-                <div class="account-dropdown">
-
-                    <h4>ĐĂNG NHẬP TÀI KHOẢN</h4>
-
-                    <p>Nhập email và mật khẩu của bạn:</p>
-
-                    <form action="dangnhap.php" method="POST">
-
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                            required
-                        >
-
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="Mật khẩu"
-                            required
-                        >
-
-                        <button
-                            type="submit"
-                            class="login-button"
-                        >
-                            ĐĂNG NHẬP
-                        </button>
-
-                    </form>
+    </button>
 
 
-                    <div class="account-links">
+    <div class="account-dropdown">
 
-                        <p>
-                            Khách hàng mới?
-                            <a href="dangky.php">Tạo tài khoản</a>
-                        </p>
+        <?php if (isset($_SESSION["ma_nguoi_dung"])) { ?>
 
-                        <p>
-                            Quên mật khẩu?
-                            <a href="#">Khôi phục mật khẩu</a>
-                        </p>
+            <!-- ĐÃ ĐĂNG NHẬP -->
 
-                    </div>
+            <h4>THÔNG TIN TÀI KHOẢN</h4>
 
-                </div>
+            <p>
+                Xin chào,
+                <strong>
+                    <?php
+                    echo htmlspecialchars($_SESSION["ho_ten"]);
+                    ?>
+                </strong>
+            </p>
+
+            <div class="account-links">
+
+                <p>
+                    <a href="taikhoan.php">
+                        Thông tin tài khoản
+                    </a>
+                </p>
+
+                <p>
+                    <a href="order_history.php">
+                        Đơn hàng của tôi
+                    </a>
+                </p>
+
+                <p>
+                    <a href="logout.php">
+                        Đăng xuất
+                    </a>
+                </p>
 
             </div>
+
+
+        <?php } else { ?>
+
+            <!-- CHƯA ĐĂNG NHẬP -->
+
+            <h4>ĐĂNG NHẬP TÀI KHOẢN</h4>
+
+            <p>Nhập email và mật khẩu của bạn:</p>
+
+            <form action="dangnhap.php" method="POST">
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                >
+
+                <input
+                    type="password"
+                    name="mat_khau"
+                    placeholder="Mật khẩu"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+                    ĐĂNG NHẬP
+                </button>
+
+            </form>
+
+
+            <div class="account-links">
+
+                <p>
+                    Khách hàng mới?
+                    <a href="dangky.php">
+                        Tạo tài khoản
+                    </a>
+                </p>
+
+                <p>
+                    Quên mật khẩu?
+                    <a href="mat-khau.php">
+                        Khôi phục mật khẩu
+                    </a>
+                </p>
+
+            </div>
+
+        <?php } ?>
+
+    </div>
+
+</div>
 
 
             <!-- GIỎ HÀNG -->
