@@ -1,105 +1,77 @@
 <?php
-include "Ketnoi.php";
 
-$sql = "SELECT * FROM san_pham ORDER BY ma_san_pham DESC";
-$result = $conn->query($sql);
+session_start();
 
-if (!$result) {
-    die("Lỗi SQL: " . $conn->error);
+// KIỂM TRA PHÂN QUYỀN
+if (!isset($_SESSION["vai_tro"]) || $_SESSION["vai_tro"] != "admin") {
+
+    header("Location: ../dangnhap.php");
+
+    exit();
 }
+
 ?>
 
 <!DOCTYPE html>
+
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cửa hàng trái cây miền Nam</title>
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="Style.css">
+<title>Trang quản trị</title>
+
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <h1>🍊 CỬA HÀNG TRÁI CÂY MIỀN NAM</h1>
+<h1> Quản Lý Cửa Hàng Trái Cây</h1>
 
-        <nav>
-            <a href="index.php">Trang chủ</a>
-            <a href="dangnhap.php">Đăng nhập</a>
-            <a href="dangky.php">Đăng ký</a>
-            <a href="giohang.php">Giỏ hàng</a>
-        </nav>
-    </header>
+<p>
+    Xin chào:
+    <strong>
+        <?php echo $_SESSION["ho_ten"]; ?>
+    </strong>
+</p>
 
+<hr>
 
-    <!-- NỘI DUNG -->
-    <main>
+<h2>Chức năng quản trị</h2>
 
-        <h2>Danh sách sản phẩm</h2>
+<ul>
 
-        <div class="san-pham-container">
+<li>
+    <a href="don-hang.php">
+        Quản lý đơn hàng
+    </a>
+</li>
 
-            <?php
-            if ($result->num_rows > 0) {
+<li>
+    Quản lý sản phẩm
+</li>
 
-                while ($row = $result->fetch_assoc()) {
-            ?>
+<li>
+    Quản lý danh mục
+</li>
 
-                    <div class="san-pham">
+<li>
+    Quản lý người dùng
+</li>
 
-                        <img 
-                            src="images/<?php echo htmlspecialchars($row['hinh_anh']); ?>" 
-                            alt="<?php echo htmlspecialchars($row['ten_san_pham']); ?>"
-                        >
+</ul>
 
-                        <h3>
-                            <?php echo htmlspecialchars($row['ten_san_pham']); ?>
-                        </h3>
+<hr>
 
-                        <p>
-                            <strong>
-                                <?php echo number_format($row['gia']); ?> VNĐ
-                            </strong>
-                        </p>
+<a href="../index.php">
+    Về trang chủ
+</a>
 
-                        <p>
-                            Xuất xứ:
-                            <?php echo htmlspecialchars($row['xuat_xu']); ?>
-                        </p>
+<br><br>
 
-                        <p>
-                            Còn:
-                            <?php echo $row['so_luong_ton']; ?>
-                            sản phẩm
-                        </p>
-
-                        <button>
-                            Thêm vào giỏ hàng
-                        </button>
-
-                    </div>
-
-            <?php
-                }
-
-            } else {
-                echo "<p>Chưa có sản phẩm.</p>";
-            }
-            ?>
-
-        </div>
-
-    </main>
-
-
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2026 Cửa hàng trái cây miền Nam</p>
-    </footer>
+<a href="../logout.php">
+    Đăng xuất
+</a>
 
 </body>
 
