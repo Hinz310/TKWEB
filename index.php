@@ -93,7 +93,7 @@ if (!$result) {
 
 
                     <!-- LIÊN HỆ -->
-                    <a href="#lien-he" class="side-menu-link">
+                    <a href="lienhe.php" class="side-menu-link">
                         LIÊN HỆ
                     </a>
 
@@ -279,7 +279,7 @@ if (!$result) {
                 DANH MỤC TRÁI CÂY
             </a>
 
-            <a href="#lien-he" class="category-item">
+            <a href="lienhe.php" class="category-item">
                 LIÊN HỆ
             </a>
 
