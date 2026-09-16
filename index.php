@@ -1,16 +1,4 @@
-<?php
 
-session_start();
-
-include "Ketnoi.php";
-
-$sql = "SELECT * FROM san_pham ORDER BY ma_san_pham DESC";
-$result = $conn->query($sql);
-
-if (!$result) {
-    die("Lỗi SQL: " . $conn->error);
-}
-?>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -325,17 +313,19 @@ if (!$result) {
 
 <!-- THANH DANH MỤC -->
 <nav class="category-nav">
-
     <div class="container">
-
         <div class="category-content">
 
             <a href="index.php" class="category-item active">
                 TRANG CHỦ
             </a>
 
-            <a href="sanpham.php" class="category-item">
-                DANH MỤC TRÁI CÂY
+            <a href="sanpham.php?category=trai-cay-viet-nam" class="category-item">
+                TRÁI CÂY VIỆT NAM
+            </a>
+
+            <a href="sanpham.php?category=trai-cay-nhap-khau" class="category-item">
+                TRÁI CÂY NHẬP KHẨU
             </a>
 
             <a href="lienhe.php" class="category-item">
@@ -343,11 +333,8 @@ if (!$result) {
             </a>
 
         </div>
-
     </div>
-
 </nav>
-
 
 <!-- BANNER -->
 <section class="home-banner">
@@ -437,10 +424,383 @@ if (!$result) {
 <!-- NỘI DUNG -->
 <main>
 
-    <!-- TRÁI NGON HÔM NAY SẼ LÀM Ở ĐÂY -->
+    <!-- TRÁI CÂY VIỆT NAM -->
+    <section class="home-product-section">
+
+        <div class="container">
+
+            <div class="home-product-title">
+                TRÁI CÂY VIỆT NAM
+            </div>
+
+            <div class="home-product-grid">
+
+                <!-- SẢN PHẨM 1 -->
+                <div class="home-product-card">
+                    <div class="product-image-box">
+                        <img src="images/BuoiDaXanh.jpg" alt="Bưởi Da Xanh">
+                    </div>
+
+                    <h3>Bưởi Da Xanh</h3>
+                    <p class="product-price">giá</p>
+
+                    <button class="choose-product">
+                        🛒 CHỌN MUA
+                    </button>
+                </div>
+
+                <!-- SẢN PHẨM 2 -->
+                <div class="home-product-card">
+                    <div class="product-image-box">
+                        <img src="images/CamCaoPhong.jpg" alt="Cam Cao Phong">
+                    </div>
+
+                    <h3>Cam Cao Phong</h3>
+                    <p class="product-price">giá</p>
+
+                    <button class="choose-product">
+                        🛒 CHỌN MUA
+                    </button>
+                </div>
+
+                <!-- SẢN PHẨM 3 -->
+                <div class="home-product-card">
+                    <div class="product-image-box">
+                        <img src="images/CamSanh.jpg" alt="Cam Sành">
+                    </div>
+
+                    <h3>Cam Sành</h3>
+                    <p class="product-price">giá</p>
+
+                    <button class="choose-product">
+                        🛒 CHỌN MUA
+                    </button>
+                </div>
+
+                <!-- SẢN PHẨM 4 -->
+                <div class="home-product-card">
+                    <div class="product-image-box">
+                        <img src="images/ChomChom.jpg" alt="Chôm Chôm">
+                    </div>
+
+                    <h3>Chôm Chôm</h3>
+                    <p class="product-price">giá</p>
+
+                    <button class="choose-product">
+                        🛒 CHỌN MUA
+                    </button>
+                </div>
+
+                <!-- SẢN PHẨM 5 -->
+                <div class="home-product-card">
+                    <div class="product-image-box">
+                        <img src="images/DuaXiem.jpg" alt="Dừa Xiêm">
+                    </div>
+
+                    <h3>Dừa Xiêm</h3>
+                    <p class="product-price">giá</p>
+
+                    <button class="choose-product">
+                        🛒 CHỌN MUA
+                    </button>
+                </div>
+
+                <!-- SẢN PHẨM 6 -->
+                <div class="home-product-card">
+                    <div class="product-image-box">
+                        <img src="images/NhanTieu.jpg" alt="Nhãn Tiêu">
+                    </div>
+
+                    <h3>Nhãn Tiêu</h3>
+                    <p class="product-price">giá</p>
+
+                    <button class="choose-product">
+                        🛒 CHỌN MUA
+                    </button>
+                </div>
+
+                <!-- SẢN PHẨM 7 -->
+                <div class="home-product-card">
+                    <div class="product-image-box">
+                        <img src="images/SauRieng.jpg" alt="Sầu Riêng">
+                    </div>
+
+                    <h3>Sầu Riêng</h3>
+                    <p class="product-price">giá</p>
+
+                    <button class="choose-product">
+                        🛒 CHỌN MUA
+                    </button>
+                </div>
+
+                <!-- SẢN PHẨM 8 -->
+                <div class="home-product-card">
+                    <div class="product-image-box">
+                        <img src="images/ThanhLong.jpg" alt="Thanh Long">
+                    </div>
+
+                    <h3>Thanh Long</h3>
+                    <p class="product-price">giá</p>
+
+                    <button class="choose-product">
+                        🛒 CHỌN MUA
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- XEM THÊM -->
+            <div class="view-more-products">
+                <a href="sanpham.php?category=trai-cay-viet-nam">
+                    Xem thêm sản phẩm trái cây Việt Nam
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+<!-- TRÁI CÂY NHẬP KHẨU -->
+<section class="home-product-section">
+
+    <div class="container">
+
+        <!-- TIÊU ĐỀ -->
+        <div class="home-product-title">
+            TRÁI CÂY NHẬP KHẨU
+        </div>
+
+        <!-- DANH SÁCH SẢN PHẨM -->
+        <div class="home-product-grid">
+
+            <!-- SẢN PHẨM 1 -->
+            <div class="home-product-card">
+                <div class="product-image-box">
+                    <img src="images/BonBonThai.jpg" alt="Bòn Bon Thái">
+                </div>
+
+                <h3>Bòn Bon Thái</h3>
+                <p class="product-price">95.000₫ / kg</p>
+
+                <button class="choose-product">
+                    🛒 CHỌN MUA
+                </button>
+            </div>
+
+
+            <!-- SẢN PHẨM 2 -->
+            <div class="home-product-card">
+                <div class="product-image-box">
+                    <img src="images/CocThai.jpg" alt="Cóc Thái">
+                </div>
+
+                <h3>Cóc Thái</h3>
+                <p class="product-price">60.000₫ / kg</p>
+
+                <button class="choose-product">
+                    🛒 CHỌN MUA
+                </button>
+            </div>
+
+
+            <!-- SẢN PHẨM 3 -->
+            <div class="home-product-card">
+                <div class="product-image-box">
+                    <img src="images/MeThai.jpg" alt="Me Thái">
+                </div>
+
+                <h3>Me Thái</h3>
+                <p class="product-price">85.000₫ / kg</p>
+
+                <button class="choose-product">
+                    🛒 CHỌN MUA
+                </button>
+            </div>
+
+
+            <!-- SẢN PHẨM 4 -->
+            <div class="home-product-card">
+                <div class="product-image-box">
+                    <img src="images/MitThai.jpg" alt="Mít Thái">
+                </div>
+
+                <h3>Mít Thái</h3>
+                <p class="product-price">75.000₫ / kg</p>
+
+                <button class="choose-product">
+                    🛒 CHỌN MUA
+                </button>
+            </div>
+
+
+            <!-- SẢN PHẨM 5 -->
+            <div class="home-product-card">
+                <div class="product-image-box">
+                    <img src="images/DauTay.jpg" alt="Dâu Tây">
+                </div>
+
+                <h3>Dâu Tây</h3>
+                <p class="product-price">180.000₫ / kg</p>
+
+                <button class="choose-product">
+                    🛒 CHỌN MUA
+                </button>
+            </div>
+
+
+            <!-- SẢN PHẨM 6 -->
+            <div class="home-product-card">
+                <div class="product-image-box">
+                    <img src="images/HongXiem.jpg" alt="Hồng Xiêm">
+                </div>
+
+                <h3>Hồng Xiêm</h3>
+                <p class="product-price">90.000₫ / kg</p>
+
+                <button class="choose-product">
+                    🛒 CHỌN MUA
+                </button>
+            </div>
+
+
+            <!-- SẢN PHẨM 7 -->
+            <div class="home-product-card">
+                <div class="product-image-box">
+                    <img src="images/MangCut.jpg" alt="Măng Cụt">
+                </div>
+
+                <h3>Măng Cụt</h3>
+                <p class="product-price">120.000₫ / kg</p>
+
+                <button class="choose-product">
+                    🛒 CHỌN MUA
+                </button>
+            </div>
+
+
+            <!-- SẢN PHẨM 8 -->
+            <div class="home-product-card">
+                <div class="product-image-box">
+                    <img src="images/VuSua.jpg" alt="Vú Sữa">
+                </div>
+
+                <h3>Vú Sữa</h3>
+                <p class="product-price">110.000₫ / kg</p>
+
+                <button class="choose-product">
+                    🛒 CHỌN MUA
+                </button>
+            </div>
+
+        </div>
+
+
+        <!-- XEM THÊM -->
+        <div class="view-more-products">
+            <a href="sanpham.php?category=trai-cay-nhap-khau">
+                Xem thêm sản phẩm trái cây nhập khẩu
+            </a>
+        </div>
+
+    </div>
+
+</section>
 
 </main>
 
+<!--FOOTER -->
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <!-- VỀ TRÁI CÂY MIỀN NAM -->
+            <div class="footer-column">
+
+                <h3>Về Trái Cây Miền Nam</h3>
+
+                <p class="footer-description">
+                    Trái Cây Miền Nam là thương hiệu trái cây tươi
+                    chất lượng cao, với đa dạng sản phẩm phục vụ
+                    mọi nhu cầu: đặc sản vùng miền Việt Nam và
+                    trái cây nhập khẩu.
+                </p>
+
+            </div>
+
+
+            <!-- THÔNG TIN LIÊN HỆ -->
+            <div class="footer-column">
+
+                <h3>Thông tin liên hệ</h3>
+
+                <p>
+                    <strong>Chi nhánh 1:</strong>
+                    458/3F Nguyễn Hữu Thọ, phường Tân Hưng
+                </p>
+
+                <p>
+                    <strong>Điện thoại:</strong>
+                    0865 660 775
+                </p>
+
+                <p>
+                    <strong>Email:</strong>
+                    hello@traicaymiennam.com.vn
+                </p>
+
+            </div>
+
+            <!-- CHĂM SÓC KHÁCH HÀNG -->
+            <div class="footer-column footer-care">
+
+                <h3>Chăm sóc khách hàng</h3>
+
+                <div class="footer-phone">
+
+                    <img
+                        src="images/hotline.png"
+                        alt="Hotline"
+                        class="footer-phone-icon"
+                    >
+
+                    <div class="footer-contact-text">
+
+                        <a
+                            href="tel:0865660775"
+                            class="footer-phone-number"
+                        >
+                            0865 660 775
+                        </a>
+
+                        <a
+                            href="mailto:hello@traicaymiennam.com.vn"
+                            class="footer-email"
+                        >
+                            hello@traicaymiennam.com.vn
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <div class="container">
+            © 2026 Trái Cây Miền Nam. All rights reserved.
+        </div>
+
+    </div>
+
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <script src="index.js"></script>

@@ -266,8 +266,12 @@
                 TRANG CHỦ
             </a>
 
-            <a href="sanpham.php" class="category-item">
-                DANH MỤC TRÁI CÂY
+            <a href="sanpham.php?category=trai-cay-viet-nam" class="category-item">
+                TRÁI CÂY VIỆT NAM
+            </a>
+
+            <a href="sanpham.php?category=trai-cay-nhap-khau" class="category-item">
+                TRÁI CÂY NHẬP KHẨU
             </a>
 
             <a href="lienhe.php" class="category-item active">
@@ -442,9 +446,7 @@
 
 </main>
 
-<!-- ==================================================
-     FOOTER
-================================================== -->
+<!--FOOTER -->
 <footer class="site-footer">
 
     <div class="container">
