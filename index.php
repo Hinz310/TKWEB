@@ -1,4 +1,16 @@
+<?php
 
+session_start();
+
+include "Ketnoi.php";
+
+$sql = "SELECT * FROM san_pham ORDER BY ma_san_pham DESC";
+$result = $conn->query($sql);
+
+if (!$result) {
+    die("Lỗi SQL: " . $conn->error);
+}
+?>
 
 <!DOCTYPE html>
 <html lang="vi">
