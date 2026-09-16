@@ -1,97 +1,1265 @@
+/* =========================
+   CÀI ĐẶT CHUNG
+========================= */
+
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff;
+    color: #333;
 }
 
-header {
-  background: white;
-  padding: 25px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
+
+/* =========================
+   THÔNG BÁO
+========================= */
+
+.top-notice {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f58460;
+    color: #fff;
+
+    font-size: 14px;
 }
 
-header h1 {
-  margin: 0 0 20px;
+.top-notice strong {
+    margin: 0 4px;
 }
 
-nav a {
-  margin: 0 8px;
-  color: #333;
-  text-decoration: none;
-  font-weight: bold;
+
+/* =========================
+   HEADER
+========================= */
+
+.main-header {
+    width: 100%;
+    background: #ff6b3d;
 }
 
-main {
-  width: 90%;
-  max-width: 1200px;
-  margin: 30px auto;
+.main-header .container {
+    width: 100%;
+    max-width: 1450px;
+    margin: 0 auto;
+    padding: 0 25px;
 }
 
-main h2 {
-  text-align: center;
-  margin-bottom: 25px;
+.header-content {
+    width: 100%;
+    height: 95px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 22px;
 }
 
-.san-pham-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+
+/* =========================
+   NÚT MENU
+========================= */
+
+.menu-wrapper {
+    position: relative;
+    flex-shrink: 0;
 }
 
-.san-pham {
-  background: white;
-  border: 1px solid #ddd;
-  padding: 15px;
-  text-align: center;
+.menu-button {
+    width: 60px;
+    height: 65px;
+    padding: 0;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
 }
 
-.san-pham img {
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
+.menu-icon {
+    font-size: 32px;
+    line-height: 30px;
 }
 
-.san-pham h3 {
-  margin: 15px 0 10px;
+.menu-text {
+    margin-top: 6px;
+    font-size: 11px;
 }
 
-.san-pham strong {
-  font-size: 18px;
+
+/* =========================
+   MENU XỔ
+========================= */
+
+.side-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+
+    width: 335px;
+    padding-bottom: 20px;
+
+    background: #fff;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-10px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
 }
 
-.san-pham button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  background: #333;
-  color: white;
-  cursor: pointer;
+.side-menu.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translateY(0);
 }
 
-.san-pham button:hover {
-  background: #555;
+
+/* HOME */
+
+.side-menu-home {
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom: 1px solid #eee;
+
+    text-decoration: none;
 }
 
-footer {
-  margin-top: 40px;
-  padding: 20px;
-  background: white;
-  text-align: center;
+.side-menu-home img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
 }
+
+
+/* LINK MENU */
+
+.side-menu-link {
+    width: 100%;
+    height: 55px;
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+
+    background: #fff;
+    color: #181818;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.side-menu-link:hover {
+    background: #f7f7f7;
+    color: #ff6b3d;
+}
+
+
+/* =========================
+   DANH MỤC TRÁI CÂY
+========================= */
+
+.side-menu-category {
+    width: 100%;
+}
+
+.category-toggle {
+    width: 100%;
+    height: 55px;
+    padding: 0 20px;
+
+    border: 0;
+    outline: 0;
+
+    background: #fff;
+    color: #181818;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.category-toggle:hover {
+    background: #f7f7f7;
+    color: #ff6b3d;
+}
+
+.category-toggle:focus,
+.category-toggle:active {
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+}
+
+
+/* MENU CON */
+
+.category-submenu {
+    max-height: 0;
+    overflow: hidden;
+
+    background: #fafafa;
+
+    transition: max-height 0.3s ease;
+}
+
+.category-submenu.show {
+    max-height: 100px;
+}
+
+.category-submenu a {
+    width: 100%;
+    height: 45px;
+    padding: 0 35px;
+
+    display: flex;
+    align-items: center;
+
+    color: #555;
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: 0.2s;
+}
+
+.category-submenu a:hover {
+    background: #f3f3f3;
+    color: #ff6b3d;
+}
+
+
+/* =========================
+   HỖ TRỢ
+========================= */
+
+.menu-support {
+    margin-top: 15px;
+    padding: 22px 20px 5px;
+
+    border-top: 1px solid #eee;
+}
+
+.menu-support > p {
+    margin: 0 0 20px;
+    font-size: 15px;
+}
+
+.support-item {
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    font-size: 14px;
+}
+
+.support-item img {
+    width: 23px;
+    height: 23px;
+    object-fit: contain;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.main-logo {
+    width: 150px;
+    height: 80px;
+
+    flex: 0 0 150px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* =========================
+   TÌM KIẾM
+========================= */
+
+.header-search {
+    height: 52px;
+
+    flex: 1;
+    min-width: 250px;
+    max-width: 580px;
+
+    display: flex;
+    align-items: center;
+
+    background: #fff;
+
+    border: 1px solid #eee;
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+.header-search input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+
+    padding: 0 16px;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+
+    font-size: 15px;
+}
+
+.header-search input::placeholder {
+    color: #999;
+}
+
+.search-button {
+    width: 55px;
+    height: 100%;
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.search-button img {
+    width: 21px;
+    height: 21px;
+    object-fit: contain;
+}
+
+
+/* =========================
+   ICON HEADER
+========================= */
+
+.header-icon-img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+
+/* =========================
+   HOTLINE
+========================= */
+
+.header-action.hotline {
+    margin-left: auto;
+
+    width: 155px;
+    height: 65px;
+
+    flex: 0 0 155px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    color: #fff;
+}
+
+.header-action.hotline > div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.header-action.hotline small,
+.header-action.hotline strong {
+    margin: 0;
+
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   TÀI KHOẢN
+========================= */
+
+.account-box {
+    position: relative;
+    flex: 0 0 85px;
+}
+
+.account-button {
+    width: 85px;
+    height: 65px;
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    cursor: pointer;
+}
+
+.account-button span {
+    color: #fff;
+    font-size: 14px;
+}
+
+
+/* HỘP ĐĂNG NHẬP */
+
+.account-dropdown {
+    position: absolute;
+    top: 70px;
+    right: -70px;
+
+    width: 340px;
+    padding: 25px;
+
+    background: #fff;
+    color: #333;
+
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-10px);
+
+    transition: 0.25s ease;
+}
+
+.account-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translateY(0);
+}
+
+.account-dropdown h4 {
+    margin: 0 0 8px;
+
+    color: #ff6b3d;
+
+    font-size: 19px;
+    text-align: center;
+}
+
+.account-dropdown > p {
+    margin: 0 0 18px;
+
+    color: #888;
+    font-size: 14px;
+}
+
+.account-dropdown input {
+    width: 100%;
+    height: 45px;
+
+    margin-bottom: 12px;
+    padding: 0 12px;
+
+    border: 1px solid #ddd;
+    outline: 0;
+}
+
+.login-button {
+    width: 100%;
+    height: 45px;
+
+    border: 0;
+
+    background: #ff6b3d;
+    color: #fff;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.account-links {
+    margin-top: 18px;
+}
+
+.account-links p {
+    margin: 7px 0;
+
+    color: #888;
+    font-size: 13px;
+}
+
+.account-links a {
+    color: #ff6b3d;
+    text-decoration: none;
+}
+
+
+/* =========================
+   GIỎ HÀNG
+========================= */
+
+.cart-header {
+    width: 85px;
+    height: 65px;
+
+    flex: 0 0 85px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    color: #fff;
+    text-decoration: none;
+}
+
+.cart-header:hover {
+    color: #fff;
+}
+
+.cart-icon-box {
+    position: relative;
+}
+
+.cart-icon-box img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+.cart-text {
+    color: #fff;
+    font-size: 14px;
+}
+
+.cart-count {
+    position: absolute;
+
+    top: -9px;
+    right: -12px;
+
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #d90000;
+    color: #fff;
+
+    border: 2px solid #ff6b3d;
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   THANH DANH MỤC
+========================= */
+
+.category-nav {
+    width: 100%;
+
+    background: #fff;
+
+    border-bottom: 1px solid #eee;
+}
+
+.category-nav .container {
+    max-width: 1330px;
+}
+
+.category-content {
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 30px;
+}
+
+.category-item {
+    height: 40px;
+    padding: 0 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #ff6b3d;
+    border-radius: 4px;
+
+    background: #fff;
+    color: #333;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.category-item:hover,
+.category-item.active {
+    background: #ff6b3d;
+    color: #fff;
+}
+
+
+/* =========================
+   BANNER
+========================= */
+
+.home-banner {
+    width: calc(100% - 40px);
+    max-width: 1330px;
+
+    margin: 20px auto;
+
+    overflow: hidden;
+
+    border-radius: 6px;
+}
+
+.home-banner .carousel-item {
+    height: 350px;
+}
+
+.home-banner .carousel-item img {
+    width: 100%;
+    height: 350px;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.home-banner .carousel-control-prev,
+.home-banner .carousel-control-next {
+    width: 6%;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+
+    .header-content {
+        gap: 12px;
+    }
+
+    .main-logo {
+        width: 120px;
+        flex-basis: 120px;
+    }
+
+    .header-action.hotline {
+        width: 135px;
+        flex-basis: 135px;
+    }
+}
+
 
 @media (max-width: 900px) {
-  .san-pham-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
+
+    .header-content {
+        height: auto;
+        padding: 12px 0;
+
+        flex-wrap: wrap;
+    }
+
+    .header-search {
+        order: 10;
+
+        max-width: none;
+        flex: 0 0 100%;
+    }
+
+    .category-content {
+        padding: 8px 10px;
+
+        justify-content: flex-start;
+
+        gap: 10px;
+
+        overflow-x: auto;
+    }
+
+    .category-item {
+        flex-shrink: 0;
+    }
 }
 
-@media (max-width: 500px) {
-  .san-pham-container {
-    grid-template-columns: 1fr;
-  }
+
+@media (max-width: 700px) {
+
+    .main-header .container {
+        padding: 0 12px;
+    }
+
+    .main-logo {
+        width: 95px;
+        flex-basis: 95px;
+    }
+
+    .header-action.hotline > div,
+    .account-button span,
+    .cart-text {
+        display: none;
+    }
+
+    .header-action.hotline,
+    .account-box,
+    .cart-header {
+        width: 45px;
+        flex-basis: 45px;
+    }
+
+    .account-button {
+        width: 45px;
+    }
+
+    .side-menu {
+        width: min(335px, calc(100vw - 24px));
+    }
+
+    .home-banner {
+        width: 100%;
+        margin-top: 10px;
+
+        border-radius: 0;
+    }
+
+    .home-banner .carousel-item,
+    .home-banner .carousel-item img {
+        height: 220px;
+    }
+}
+
+/* ==================================================
+   TRANG LIÊN HỆ
+================================================== */
+
+.contact-page {
+    width: 100%;
+    padding: 30px 0 70px;
+    background: #fff;
+}
+
+.contact-container {
+    width: 100%;
+    max-width: 1330px;
+    margin: 0 auto;
+}
+
+
+/* BREADCRUMB */
+
+.contact-breadcrumb {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 14px;
+    color: #999;
+}
+
+.contact-breadcrumb a {
+    color: #555;
+    text-decoration: none;
+}
+
+.contact-breadcrumb a:hover {
+    color: #ff6b3d;
+}
+
+
+/* ==================================================
+   GOOGLE MAP
+================================================== */
+
+.contact-map {
+    width: 100%;
+    height: 380px;
+    margin-bottom: 45px;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.contact-map iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
+
+/* ==================================================
+   2 CỘT
+================================================== */
+
+.contact-content {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 80px;
+
+    align-items: start;
+}
+
+
+/* ==================================================
+   TIÊU ĐỀ
+================================================== */
+
+.contact-information h2,
+.contact-form-section h2 {
+    margin: 0 0 25px;
+
+    color: #ff6b3d;
+
+    font-size: 28px;
+    font-weight: 600;
+}
+
+
+/* ==================================================
+   THÔNG TIN BÊN TRÁI
+================================================== */
+
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    margin-bottom: 27px;
+}
+
+.contact-icon {
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #ddd;
+    border-radius: 50%;
+
+    color: #333;
+    font-size: 19px;
+}
+
+.contact-info-item div {
+    padding-top: 2px;
+}
+
+.contact-info-item strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #222;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.contact-info-item p {
+    margin: 0;
+
+    color: #666;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* ==================================================
+   FORM BÊN PHẢI
+================================================== */
+
+.contact-form-section {
+    width: 100%;
+}
+
+.contact-description {
+    margin: -10px 0 22px;
+
+    color: #555;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* TẤT CẢ INPUT */
+
+.contact-form-section input,
+.contact-form-section textarea {
+    width: 100%;
+
+    border: 1px solid #ddd;
+    border-radius: 4px;
+
+    outline: none;
+
+    background: #fff;
+    color: #333;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+
+/* INPUT */
+
+.contact-form-section input {
+    height: 52px;
+    padding: 0 16px;
+}
+
+
+/* TÊN */
+
+#contactName {
+    margin-bottom: 16px;
+}
+
+
+/* EMAIL + PHONE */
+
+.contact-form-row {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 16px;
+
+    margin-bottom: 16px;
+}
+
+
+/* TEXTAREA */
+
+.contact-form-section textarea {
+    height: 150px;
+
+    padding: 15px 16px;
+
+    resize: vertical;
+}
+
+
+/* PLACEHOLDER */
+
+.contact-form-section input::placeholder,
+.contact-form-section textarea::placeholder {
+    color: #999;
+}
+
+
+/* CLICK INPUT */
+
+.contact-form-section input:focus,
+.contact-form-section textarea:focus {
+    border-color: #ff6b3d;
+
+    box-shadow: 0 0 0 3px rgba(255, 107, 61, 0.08);
+}
+
+
+/* ==================================================
+   NÚT GỬI
+================================================== */
+
+.contact-submit {
+    height: 50px;
+
+    margin-top: 20px;
+    padding: 0 30px;
+
+    border: none;
+    border-radius: 4px;
+
+    background: #ff6b3d;
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.contact-submit:hover {
+    background: #e85b31;
+    transform: translateY(-1px);
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 992px) {
+
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-map {
+        height: 330px;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    .contact-page {
+        padding: 20px 0 50px;
+    }
+
+    .contact-map {
+        height: 260px;
+        margin-bottom: 30px;
+    }
+
+    .contact-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-information h2,
+    .contact-form-section h2 {
+        font-size: 23px;
+    }
+
+    .contact-submit {
+        width: 100%;
+    }
+}
+/* ==================================================
+   FOOTER
+================================================== */
+
+.site-footer {
+    width: 100%;
+    margin-top: 60px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    color: #444;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1.3fr 1fr;
+    gap: 70px;
+    align-items: start;
+    padding: 45px 0;
+}
+
+
+/* CỘT FOOTER */
+
+.footer-column {
+    min-width: 0;
+}
+
+.footer-column h3 {
+    margin: 0 0 18px;
+    color: #222;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.footer-column p {
+    margin: 0 0 10px;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.footer-description {
+    max-width: 350px;
+}
+
+
+/* CHĂM SÓC KHÁCH HÀNG */
+
+.footer-phone {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-phone-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex: 0 0 32px;
+}
+
+.footer-contact-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-phone-number {
+    margin-bottom: 5px;
+    color: #222;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+}
+
+.footer-email {
+    color: #555;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.footer-phone-number:hover,
+.footer-email:hover {
+    color: #ff6b3d;
+}
+
+
+/* BẢN QUYỀN */
+
+.footer-bottom {
+    padding: 17px 0;
+    border-top: 1px solid #eee;
+    color: #777;
+    font-size: 13px;
+    text-align: center;
+}
+
+
+/* TABLET */
+
+@media (max-width: 992px) {
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 576px) {
+
+    .site-footer {
+        margin-top: 40px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 35px 0;
+    }
+
+    .footer-phone-number {
+        font-size: 20px;
+    }
 }
