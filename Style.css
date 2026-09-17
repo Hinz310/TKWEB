@@ -1497,3 +1497,52 @@ body {
     width: 250px;
     min-height: 45px;
 }
+
+/* ===================================================
+   CĂN CHỈNH RIÊNG CHO KHUNG VÀ HÌNH ẢNH SẢN PHẨM
+   =================================================== */
+
+.san-pham-container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+    gap: 20px !important;
+    margin: 20px 0 !important;
+}
+
+.san-pham {
+    background: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+    text-align: center !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+}
+
+/* Ép kích thước ảnh trái cây đều đẹp, không đụng vào icon điện thoại/email */
+.san-pham img {
+    width: 100% !important;
+    height: 180px !important;
+    object-fit: cover !important;
+    border-radius: 6px !important;
+}
+
+.san-pham h3 {
+    font-size: 1.1rem !important;
+    margin: 10px 0 5px 0 !important;
+    color: #333 !important;
+}
+
+.san-pham button {
+    background-color: #27ae60 !important;
+    color: white !important;
+    border: none !important;
+    padding: 8px 15px !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    margin-top: 10px !important;
+    font-weight: bold !important;
+}
+
+.san-pham button:hover {
+    background-color: #219150 !important;
+}
