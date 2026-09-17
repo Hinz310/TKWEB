@@ -21,8 +21,13 @@ while ($row = $result->fetch_assoc()) {
 /* CHIA ĐÔI SẢN PHẨM */
 $half = (int) ceil(count($products) / 2);
 
-$vietNamProducts = array_slice($products, 0, $half);
-$nhapKhauProducts = array_slice($products, $half)
+/* Chia toàn bộ sản phẩm thành 2 nhóm */
+$allVietNamProducts = array_slice($products, 0, $half);
+$allNhapKhauProducts = array_slice($products, $half);
+
+/* Trang chủ chỉ hiển thị 8 sản phẩm mỗi nhóm */
+$vietNamProducts = array_slice($allVietNamProducts, 0, 8);
+$nhapKhauProducts = array_slice($allNhapKhauProducts, 0, 8);
 ?>
 
 <!DOCTYPE html>
