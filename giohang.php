@@ -34,13 +34,17 @@ $final_total = max(0, $subtotal - $discount_amount);
 </head>
 
 <body>
+        <!-- THANH THÔNG BÁO -->
+<div class="top-notice">
+    Giảm <strong>20.000đ</strong> cho đơn hàng khi nhập voucher <strong>TRAICAY20K</strong>
+</div>
 
     <!-- HEADER -->
     <header class="main-header">
         <div class="container">
             <div class="header-content">
                 <a href="index.php" class="main-logo">
-                    <img src="images/logo.png" alt="Trái Cây Miền Nam" style="max-height: 50px;">
+                    <img src="images/logo.png" alt="Trái Cây Miền Nam">
                 </a>
                 <nav>
                     <a href="index.php" class="btn btn-outline-success me-2">🏠 Trang chủ</a>
@@ -183,7 +187,7 @@ $final_total = max(0, $subtotal - $discount_amount);
                                 </select>
                             </div>
 
-                            <button type="submit" class="btn btn-success btn-lg w-100 fw-bold">✅ XÁC NHẬN ĐẶT HÀNG</button>
+                            <button type="submit" class="btn btn-success btn-lg w-100 fw-bold">XÁC NHẬN ĐẶT HÀNG</button>
                         </form>
                     </div>
                 </div>

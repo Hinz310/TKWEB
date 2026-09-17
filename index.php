@@ -79,7 +79,7 @@ $nhapKhauProducts = array_slice($allNhapKhauProducts, 0, 8);
 
 <!-- THANH THÔNG BÁO -->
 <div class="top-notice">
-    Giảm <strong>25.000đ</strong> phí ship cho đơn hàng trên <strong>600.000đ</strong>
+    Giảm <strong>20.000đ</strong> cho đơn hàng khi nhập voucher <strong>TRAICAY20K</strong>
 </div>
 
 <!-- THÔNG BÁO KHI THÊM GIỎ HÀNG THÀNH CÔNG -->
@@ -134,13 +134,32 @@ $nhapKhauProducts = array_slice($allNhapKhauProducts, 0, 8);
                 <img src="images/logo.png" alt="Trái Cây Miền Nam">
             </a>
 
-            <!-- TÌM KIẾM -->
-            <form class="header-search" action="sanpham.php" method="GET">
-                <input type="text" name="search" placeholder="Tìm kiếm sản phẩm...">
-                <button type="submit" class="search-button" aria-label="Tìm kiếm">
-                    <img src="images/timkiem.png" alt="">
-                </button>
-            </form>
+            <!-- TÌM KIẾM TRANG CHỦ -->
+<form class="header-search" action="sanpham.php" method="GET">
+
+    <!-- Báo cho sanpham.php biết: tìm trên toàn bộ sản phẩm -->
+    <input
+        type="hidden"
+        name="scope"
+        value="all"
+    >
+
+    <input
+        type="text"
+        name="search"
+        placeholder="Tìm kiếm sản phẩm..."
+        required
+    >
+
+    <button
+        type="submit"
+        class="search-button"
+        aria-label="Tìm kiếm"
+    >
+        <img src="images/timkiem.png" alt="">
+    </button>
+
+</form>
 
             <!-- HOTLINE -->
             <div class="header-action hotline">
@@ -423,6 +442,9 @@ $nhapKhauProducts = array_slice($allNhapKhauProducts, 0, 8);
 
 <!-- BOOTSTRAP JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JAVASCRIPT MENU + TÀI KHOẢN -->
+<script src="index.js"></script>
 
 <!-- JAVASCRIPT XỬ LÝ POPUP CHỌN MUA -->
 <script>

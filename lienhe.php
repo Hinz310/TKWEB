@@ -1,3 +1,20 @@
+<?php
+
+session_start();
+
+$cartCount = 0;
+
+if (isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+
+    foreach ($_SESSION['cart'] as $item) {
+
+        $cartCount += (int)($item['quantity'] ?? 0);
+
+    }
+
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="vi">
@@ -20,8 +37,7 @@
 
 <!-- THANH THÔNG BÁO -->
 <div class="top-notice">
-    Giảm <strong>25.000đ</strong> phí ship cho đơn hàng trên
-    <strong>600.000đ</strong>
+    Giảm <strong>20.000đ</strong> cho đơn hàng khi nhập voucher <strong>TRAICAY20K</strong>
 </div>
 
 
@@ -159,94 +175,143 @@
 
 
             <!-- TÀI KHOẢN -->
-            <div class="account-box">
+<div class="account-box">
 
-                <button
-                    class="account-button"
-                    type="button"
-                    aria-expanded="false"
-                >
+    <button
+        class="account-button"
+        type="button"
+        aria-expanded="false"
+    >
 
-                    <img
-                        src="images/taikhoan.png"
-                        alt=""
-                        class="header-icon-img"
-                    >
+        <img
+            src="images/taikhoan.png"
+            alt=""
+            class="header-icon-img"
+        >
 
-                    <span>Tài khoản</span>
+        <span>
+            <?php
+            if (isset($_SESSION["ma_nguoi_dung"])) {
+                echo htmlspecialchars($_SESSION["ho_ten"] ?? "Tài khoản");
+            } elseif (isset($_SESSION["user_id"])) {
+                echo htmlspecialchars($_SESSION["fullname"] ?? "Tài khoản");
+            } else {
+                echo "Tài khoản";
+            }
+            ?>
+        </span>
 
-                </button>
-
-
-                <div class="account-dropdown">
-
-                    <h4>ĐĂNG NHẬP TÀI KHOẢN</h4>
-
-                    <p>Nhập email và mật khẩu của bạn:</p>
-
-                    <form action="dangnhap.php" method="POST">
-
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                            required
-                        >
-
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="Mật khẩu"
-                            required
-                        >
-
-                        <button
-                            type="submit"
-                            class="login-button"
-                        >
-                            ĐĂNG NHẬP
-                        </button>
-
-                    </form>
+    </button>
 
 
-                    <div class="account-links">
+    <div class="account-dropdown">
 
-                        <p>
-                            Khách hàng mới?
-                            <a href="dangky.php">Tạo tài khoản</a>
-                        </p>
+        <?php if (isset($_SESSION["ma_nguoi_dung"]) || isset($_SESSION["user_id"])) { ?>
 
-                        <p>
-                            Quên mật khẩu?
-                            <a href="#">Khôi phục mật khẩu</a>
-                        </p>
+            <h4>THÔNG TIN TÀI KHOẢN</h4>
 
-                    </div>
+            <p>
+                Xin chào,
+                <strong>
+                    <?php
+                    echo htmlspecialchars(
+                        $_SESSION["ho_ten"]
+                        ?? $_SESSION["fullname"]
+                        ?? "Khách hàng"
+                    );
+                    ?>
+                </strong>
+            </p>
 
-                </div>
+            <div class="account-links">
+
+                <p>
+                    <a href="taikhoan.php">Thông tin tài khoản</a>
+                </p>
+
+                <p>
+                    <a href="order_history.php">Đơn hàng của tôi</a>
+                </p>
+
+                <p>
+                    <a href="logout.php">Đăng xuất</a>
+                </p>
 
             </div>
 
+        <?php } else { ?>
+
+            <h4>ĐĂNG NHẬP TÀI KHOẢN</h4>
+
+            <p>Nhập email và mật khẩu của bạn:</p>
+
+            <form action="dangnhap.php" method="POST">
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                >
+
+                <input
+                    type="password"
+                    name="mat_khau"
+                    placeholder="Mật khẩu"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+                    ĐĂNG NHẬP
+                </button>
+
+            </form>
+
+
+            <div class="account-links">
+
+                <p>
+                    Khách hàng mới?
+                    <a href="dangky.php">Tạo tài khoản</a>
+                </p>
+
+                <p>
+                    Quên mật khẩu?
+                    <a href="mat-khau.php">Khôi phục mật khẩu</a>
+                </p>
+
+            </div>
+
+        <?php } ?>
+
+    </div>
+
+</div>
+
 
             <!-- GIỎ HÀNG -->
-            <a href="giohang.php" class="cart-header">
+<a href="giohang.php" class="cart-header">
 
-                <div class="cart-icon-box">
+    <div class="cart-icon-box">
 
-                    <img
-                        src="images/giohang.png"
-                        alt=""
-                        class="header-icon-img"
-                    >
+        <img
+            src="images/giohang.png"
+            alt="Giỏ hàng"
+            class="header-icon-img"
+        >
 
-                    <span class="cart-count">0</span>
+        <span class="cart-count">
+            <?php echo $cartCount; ?>
+        </span>
 
-                </div>
+    </div>
 
-                <span class="cart-text">Giỏ hàng</span>
+    <span class="cart-text">Giỏ hàng</span>
 
-            </a>
+</a>
 
         </div>
 
