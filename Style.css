@@ -1381,3 +1381,119 @@ body {
         height: 250px;
     }
 }
+
+
+/* Banner trang danh mục sản phẩm */
+.category-banner {
+    width: 75%;
+    margin: 20px auto 35px;
+}
+
+.category-banner img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* NÚT XEM THÊM TRANG SẢN PHẨM */
+
+.load-more-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.load-more-btn {
+    min-width: 190px;
+    padding: 12px 32px;
+
+    background: #ffffff;
+    color: #ff663d;
+
+    border: 1px solid #ff663d;
+    border-radius: 6px;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.load-more-btn:hover {
+    background: #ff663d;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 102, 61, 0.2);
+}
+
+/* TRANG DANH MỤC SẢN PHẨM */
+
+.product-category-page {
+    width: 100%;
+    padding: 30px 0 70px;
+    background: #fff;
+}
+
+/* Đồng bộ container với trang Liên hệ */
+.product-category-page > .container {
+    width: 100%;
+    max-width: 1330px;
+    margin: 0 auto;
+}
+
+/* Breadcrumb dùng chung style với Liên hệ */
+.product-category-page .contact-breadcrumb {
+    margin-bottom: 20px;
+}
+
+/* Banner nằm đúng theo container */
+.product-category-page .category-banner {
+    width: 100%;
+    margin: 0 0 35px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.product-category-page .category-banner img {
+    display: block;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+/*PHẦN DƯỚI BANNER TRANG SẢN PHẨM */
+
+.product-toolbar {
+    width: 100%;
+    min-height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px 0;
+}
+
+/* Chữ Trái cây Việt Nam / Trái cây nhập khẩu */
+.product-category-name {
+    margin: 0;
+
+    color: #ff663d;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* Chừa chỗ bên phải để làm Sắp xếp / Lọc */
+.product-sort-area {
+    width: 250px;
+    min-height: 45px;
+}

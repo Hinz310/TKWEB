@@ -3,30 +3,90 @@
 session_start();
 require_once "Ketnoi.php";
 
-/* LẤY TẤT CẢ SẢN PHẨM TỪ DATABASE */
+
+/* LẤY DANH MỤC TRÊN URL */
+
+$category = $_GET['category'] ?? 'trai-cay-viet-nam';
+
+
+if ($category === 'trai-cay-nhap-khau') {
+
+    $title = 'TRÁI CÂY NHẬP KHẨU';
+
+} else {
+
+    $category = 'trai-cay-viet-nam';
+    $title = 'TRÁI CÂY VIỆT NAM';
+
+}
+
+
+/*  TẤT CẢ SẢN PHẨM
+   CÙNG THỨ TỰ VỚI TRANG CHỦ*/
+
 $sql = "SELECT * FROM san_pham ORDER BY ma_san_pham ASC";
+
 $result = $conn->query($sql);
 
+
 if (!$result) {
+
     die("Lỗi SQL: " . $conn->error);
+
 }
 
-/* ĐƯA SẢN PHẨM VÀO MẢNG */
+
+/* ĐƯA SẢN PHẨM VÀO MẢNG*/
+
 $products = [];
 
+
 while ($row = $result->fetch_assoc()) {
+
     $products[] = $row;
+
 }
 
-/* CHIA ĐÔI SẢN PHẨM */
+
+/* CHIA ĐÔI SẢN PHẨM GIỐNG TRANG CHỦ */
+
 $half = (int) ceil(count($products) / 2);
 
-$vietNamProducts = array_slice($products, 0, $half);
-$nhapKhauProducts = array_slice($products, $half)
+
+/* NỬA ĐẦU */
+$vietNamProducts = array_slice(
+    $products,
+    0,
+    $half
+);
+
+
+/* NỬA SAU */
+$nhapKhauProducts = array_slice(
+    $products,
+    $half
+);
+
+
+/* CHỌN DANH SÁCH CẦN HIỂN THỊ */
+
+if ($category === 'trai-cay-nhap-khau') {
+
+    $displayProducts = $nhapKhauProducts;
+
+} else {
+
+    $displayProducts = $vietNamProducts;
+
+}
+
 ?>
 
+
 <!DOCTYPE html>
+
 <html lang="vi">
+
 
 <head>
 
@@ -37,41 +97,58 @@ $nhapKhauProducts = array_slice($products, $half)
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Trái Cây Miền Nam</title>
+
+    <title>
+        <?php echo $title; ?> - Trái Cây Miền Nam
+    </title>
+
 
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
 
-    <link rel="stylesheet" href="Style.css">
+
+    <link
+        rel="stylesheet"
+        href="Style.css"
+    >
 
 </head>
 
 
+
 <body>
+
 
 <!-- THANH THÔNG BÁO -->
 
 <div class="top-notice">
 
-    Giảm <strong>25.000đ</strong> phí ship cho đơn hàng trên
+    Giảm <strong>25.000đ</strong>
+    phí ship cho đơn hàng trên
 
     <strong>600.000đ</strong>
 
 </div>
 
 
-<!-- HEADER -->
+
+<!-- HEADER-->
 
 <header class="main-header">
 
+
     <div class="container">
+
 
         <div class="header-content">
 
-            <!-- MENU -->
+
+            <!-- MENU-->
+
             <div class="menu-wrapper">
+
 
                 <button
                     class="menu-button"
@@ -83,6 +160,7 @@ $nhapKhauProducts = array_slice($products, $half)
                     <span class="menu-icon">
                         ☰
                     </span>
+
 
                     <span class="menu-text">
                         MENU
@@ -110,9 +188,10 @@ $nhapKhauProducts = array_slice($products, $half)
 
 
 
-                    <!-- DANH MỤC TRÁI CÂY -->
+                    <!-- DANH MỤC -->
 
                     <div class="side-menu-category">
+
 
                         <button
                             class="category-toggle"
@@ -125,7 +204,9 @@ $nhapKhauProducts = array_slice($products, $half)
                         </button>
 
 
+
                         <div class="category-submenu">
+
 
                             <a
                                 href="sanpham.php?category=trai-cay-viet-nam"
@@ -136,6 +217,7 @@ $nhapKhauProducts = array_slice($products, $half)
                             </a>
 
 
+
                             <a
                                 href="sanpham.php?category=trai-cay-nhap-khau"
                             >
@@ -144,7 +226,9 @@ $nhapKhauProducts = array_slice($products, $half)
 
                             </a>
 
+
                         </div>
+
 
                     </div>
 
@@ -167,6 +251,7 @@ $nhapKhauProducts = array_slice($products, $half)
 
                     <div class="menu-support">
 
+
                         <p>
                             BẠN CẦN HỖ TRỢ
                         </p>
@@ -186,6 +271,7 @@ $nhapKhauProducts = array_slice($products, $half)
                         </div>
 
 
+
                         <div class="support-item">
 
                             <img
@@ -199,11 +285,15 @@ $nhapKhauProducts = array_slice($products, $half)
 
                         </div>
 
+
                     </div>
+
 
                 </div>
 
+
             </div>
+
 
 
             <!-- LOGO -->
@@ -221,13 +311,15 @@ $nhapKhauProducts = array_slice($products, $half)
             </a>
 
 
-            <!-- TÌM KIẾM -->
+
+            <!--TÌM KIẾM-->
 
             <form
                 class="header-search"
                 action="sanpham.php"
                 method="GET"
             >
+
 
                 <input
                     type="text"
@@ -249,18 +341,22 @@ $nhapKhauProducts = array_slice($products, $half)
 
                 </button>
 
+
             </form>
 
 
-            <!-- HOTLINE -->
+
+            <!--HOTLINE-->
 
             <div class="header-action hotline">
+
 
                 <img
                     src="images/hotline.png"
                     alt=""
                     class="header-icon-img"
                 >
+
 
                 <div>
 
@@ -274,10 +370,12 @@ $nhapKhauProducts = array_slice($products, $half)
 
                 </div>
 
+
             </div>
 
 
-            <!-- TÀI KHOẢN -->
+
+            <!-- TÀI KHOẢN-->
 
             <div class="account-box">
 
@@ -287,6 +385,7 @@ $nhapKhauProducts = array_slice($products, $half)
                     type="button"
                     aria-expanded="false"
                 >
+
 
                     <img
                         src="images/taikhoan.png"
@@ -314,6 +413,7 @@ $nhapKhauProducts = array_slice($products, $half)
                         ?>
 
                     </span>
+
 
                 </button>
 
@@ -353,7 +453,9 @@ $nhapKhauProducts = array_slice($products, $half)
                         </p>
 
 
+
                         <div class="account-links">
+
 
                             <p>
 
@@ -364,6 +466,7 @@ $nhapKhauProducts = array_slice($products, $half)
                                 </a>
 
                             </p>
+
 
 
                             <p>
@@ -377,6 +480,7 @@ $nhapKhauProducts = array_slice($products, $half)
                             </p>
 
 
+
                             <p>
 
                                 <a href="logout.php">
@@ -386,6 +490,7 @@ $nhapKhauProducts = array_slice($products, $half)
                                 </a>
 
                             </p>
+
 
                         </div>
 
@@ -404,6 +509,7 @@ $nhapKhauProducts = array_slice($products, $half)
                         <p>
                             Nhập email và mật khẩu của bạn:
                         </p>
+
 
 
                         <form
@@ -437,6 +543,7 @@ $nhapKhauProducts = array_slice($products, $half)
 
                             </button>
 
+
                         </form>
 
 
@@ -455,6 +562,7 @@ $nhapKhauProducts = array_slice($products, $half)
                                 </a>
 
                             </p>
+
 
 
                             <p>
@@ -478,10 +586,13 @@ $nhapKhauProducts = array_slice($products, $half)
 
                 </div>
 
+
             </div>
 
+
+
             <!-- GIỎ HÀNG -->
-    
+
             <a
                 href="giohang.php"
                 class="cart-header"
@@ -490,15 +601,18 @@ $nhapKhauProducts = array_slice($products, $half)
 
                 <div class="cart-icon-box">
 
+
                     <img
                         src="images/giohang.png"
                         alt=""
                         class="header-icon-img"
                     >
 
+
                     <span class="cart-count">
                         0
                     </span>
+
 
                 </div>
 
@@ -507,28 +621,36 @@ $nhapKhauProducts = array_slice($products, $half)
                     Giỏ hàng
                 </span>
 
+
             </a>
 
 
         </div>
 
+
     </div>
+
 
 </header>
 
 
-<!-- THANH DANH MỤC -->
+
+<!--THANH DANH MỤC-->
 
 <nav class="category-nav">
 
+
     <div class="container">
+
 
         <div class="category-content">
 
 
+            <!-- TRANG CHỦ -->
+
             <a
                 href="index.php"
-                class="category-item active"
+                class="category-item"
             >
 
                 TRANG CHỦ
@@ -536,9 +658,12 @@ $nhapKhauProducts = array_slice($products, $half)
             </a>
 
 
+
+            <!-- VIỆT NAM -->
+
             <a
                 href="sanpham.php?category=trai-cay-viet-nam"
-                class="category-item"
+                class="category-item <?php echo $category === 'trai-cay-viet-nam' ? 'active' : ''; ?>"
             >
 
                 TRÁI CÂY VIỆT NAM
@@ -546,15 +671,21 @@ $nhapKhauProducts = array_slice($products, $half)
             </a>
 
 
+
+            <!-- NHẬP KHẨU -->
+
             <a
                 href="sanpham.php?category=trai-cay-nhap-khau"
-                class="category-item"
+                class="category-item <?php echo $category === 'trai-cay-nhap-khau' ? 'active' : ''; ?>"
             >
 
                 TRÁI CÂY NHẬP KHẨU
 
             </a>
 
+
+
+            <!-- LIÊN HỆ -->
 
             <a
                 href="lienhe.php"
@@ -568,73 +699,92 @@ $nhapKhauProducts = array_slice($products, $half)
 
         </div>
 
+
     </div>
+
 
 </nav>
 
 
-<!-- BANNER -->
 
-<section class="home-banner">
+<!-- TRANG DANH MỤC SẢN PHẨM -->
 
-
-    <div
-        id="fruitBanner"
-        class="carousel slide"
-        data-bs-ride="carousel"
-    >
+<main class="product-category-page">
 
 
-        <!-- CHẤM CHUYỂN BANNER -->
-
-        <div class="carousel-indicators">
+    <div class="container">
 
 
-            <button
-                type="button"
-                data-bs-target="#fruitBanner"
-                data-bs-slide-to="0"
-                class="active"
-                aria-current="true"
-                aria-label="Banner 1"
-            ></button>
+
+        <!--  BREADCRUMB -->
+
+        <div class="contact-breadcrumb">
 
 
-            <button
-                type="button"
-                data-bs-target="#fruitBanner"
-                data-bs-slide-to="1"
-                aria-label="Banner 2"
-            ></button>
+            <a href="index.php">
+                Trang chủ
+            </a>
+
+
+            <span>
+                /
+            </span>
+
+
+            <span>
+
+                <?php
+
+                echo $category === 'trai-cay-viet-nam'
+                    ? 'Trái cây Việt Nam'
+                    : 'Trái cây nhập khẩu';
+
+                ?>
+
+            </span>
 
 
         </div>
 
 
 
-        <!-- ẢNH BANNER -->
+        <!-- BANNER DANH MỤC-->
 
-        <div class="carousel-inner">
-
-
-            <div class="carousel-item active">
-
-                <img
-                    src="images/banner1.png"
-                    class="d-block w-100"
-                    alt="Banner trái cây 1"
-                >
-
-            </div>
+        <div class="category-banner">
 
 
-            <div class="carousel-item">
+            <img
+                src="images/banner1.png"
+                alt="<?php echo $title; ?>"
+            >
 
-                <img
-                    src="images/banner2.png"
-                    class="d-block w-100"
-                    alt="Banner trái cây 2"
-                >
+
+        </div>
+
+
+
+        <!-- TIÊU ĐỀ-->
+
+        <div class="product-toolbar">
+
+
+            <h2 class="product-category-name">
+
+                <?php
+
+                echo $category === 'trai-cay-viet-nam'
+                    ? 'Trái cây Việt Nam'
+                    : 'Trái cây nhập khẩu';
+
+                ?>
+
+            </h2>
+
+
+
+            <div class="product-sort-area">
+
+                <!-- SAU NÀY THÊM SẮP XẾP / LỌC -->
 
             </div>
 
@@ -643,331 +793,133 @@ $nhapKhauProducts = array_slice($products, $half)
 
 
 
-        <!-- NÚT TRƯỚC -->
+        <!--  SÁCH SẢN PHẨM-->
 
-        <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#fruitBanner"
-            data-bs-slide="prev"
+        <div
+            class="home-product-grid"
+            id="productList"
         >
 
-            <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-            ></span>
 
-            <span class="visually-hidden">
-                Trước
-            </span>
-
-        </button>
+            <?php if (count($displayProducts) > 0) { ?>
 
 
+                <?php foreach ($displayProducts as $product) { ?>
 
-        <!-- NÚT SAU -->
 
-        <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#fruitBanner"
-            data-bs-slide="next"
-        >
+                    <div
+                        class="home-product-card category-product"
+                    >
 
-            <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-            ></span>
 
-            <span class="visually-hidden">
-                Sau
-            </span>
+                        <!-- ẢNH -->
 
-        </button>
+                        <div class="product-image-box">
+
+
+                            <img
+                                src="images/<?php echo htmlspecialchars($product['hinh_anh']); ?>"
+                                alt="<?php echo htmlspecialchars($product['ten_san_pham']); ?>"
+                            >
+
+
+                        </div>
+
+
+
+                        <!-- TÊN -->
+
+                        <h3>
+
+                            <?php
+
+                            echo htmlspecialchars(
+                                $product['ten_san_pham']
+                            );
+
+                            ?>
+
+                        </h3>
+
+
+
+                        <!-- GIÁ -->
+
+                        <p class="product-price">
+
+                            <?php
+
+                            echo number_format(
+                                $product['gia'],
+                                0,
+                                ',',
+                                '.'
+                            );
+
+                            ?>₫ / kg
+
+                        </p>
+
+
+
+                        <!-- CHỌN MUA -->
+
+                        <button
+                            type="button"
+                            class="choose-product"
+                            data-id="<?php echo $product['ma_san_pham']; ?>"
+                        >
+
+                            🛒 CHỌN MUA
+
+                        </button>
+
+
+                    </div>
+
+
+                <?php } ?>
+
+
+            <?php } else { ?>
+
+
+                <p>
+                    Không có sản phẩm.
+                </p>
+
+
+            <?php } ?>
+
+
+        </div>
+
+
+
+        <!-- XEM THÊM-->
+
+        <div class="load-more-wrapper">
+
+
+            <button
+                type="button"
+                id="loadMoreBtn"
+                class="load-more-btn"
+            >
+
+                XEM THÊM
+
+            </button>
+
+
+        </div>
 
 
     </div>
 
-</section>
-
-
-<!-- NỘI DUNG -->
-
-<main>
-
-    <!-- TRÁI CÂY VIỆT NAM -->
-
-    <section class="home-product-section">
-
-        <div class="container">
-
-
-            <!-- TIÊU ĐỀ -->
-
-            <div class="home-product-title">
-
-                TRÁI CÂY VIỆT NAM
-
-            </div>
-
-
-
-            <!-- DANH SÁCH -->
-
-            <div class="home-product-grid">
-
-
-                <?php
-
-                foreach ($vietNamProducts as $product) {
-
-
-                    $id = (int)$product['ma_san_pham'];
-
-
-                    $name = htmlspecialchars(
-                        $product['ten_san_pham']
-                    );
-
-
-                    $image = htmlspecialchars(
-                        $product['hinh_anh']
-                    );
-
-
-                    $price = number_format(
-                        (float)$product['gia'],
-                        0,
-                        ',',
-                        '.'
-                    );
-
-                ?>
-
-
-                    <!-- CARD SẢN PHẨM -->
-
-                    <div class="home-product-card">
-
-
-                        <!-- ẢNH -->
-
-                        <div class="product-image-box">
-
-                            <img
-                                src="images/<?php echo $image; ?>"
-                                alt="<?php echo $name; ?>"
-                            >
-
-                        </div>
-
-
-
-                        <!-- TÊN -->
-
-                        <h3>
-
-                            <?php echo $name; ?>
-
-                        </h3>
-
-
-
-                        <!-- GIÁ -->
-
-                        <p class="product-price">
-
-                            <?php echo $price; ?>₫ / kg
-
-                        </p>
-
-
-
-                        <!-- CHỌN MUA -->
-
-                        <button
-                            type="button"
-                            class="choose-product"
-                            data-id="<?php echo $id; ?>"
-                        >
-
-                            🛒 CHỌN MUA
-
-                        </button>
-
-
-                    </div>
-
-
-                <?php
-
-                }
-
-                ?>
-
-
-            </div>
-
-
-
-            <!-- XEM THÊM -->
-
-            <div class="view-more-products">
-
-                <a
-                    href="sanpham.php?category=trai-cay-viet-nam"
-                >
-
-                    Xem thêm sản phẩm trái cây Việt Nam
-
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- TRÁI CÂY NHẬP KHẨU -->
-
-    <section class="home-product-section">
-
-        <div class="container">
-
-
-            <!-- TIÊU ĐỀ -->
-
-            <div class="home-product-title">
-
-                TRÁI CÂY NHẬP KHẨU
-
-            </div>
-
-
-
-            <!-- DANH SÁCH -->
-
-            <div class="home-product-grid">
-
-
-                <?php
-
-
-                foreach ($nhapKhauProducts as $product) {
-
-
-                    $id = (int)$product['ma_san_pham'];
-
-
-                    $name = htmlspecialchars(
-                        $product['ten_san_pham']
-                    );
-
-
-                    $image = htmlspecialchars(
-                        $product['hinh_anh']
-                    );
-
-
-                    $price = number_format(
-                        (float)$product['gia'],
-                        0,
-                        ',',
-                        '.'
-                    );
-
-                ?>
-
-
-                    <!-- CARD SẢN PHẨM -->
-
-                    <div class="home-product-card">
-
-
-                        <!-- ẢNH -->
-
-                        <div class="product-image-box">
-
-                            <img
-                                src="images/<?php echo $image; ?>"
-                                alt="<?php echo $name; ?>"
-                            >
-
-                        </div>
-
-
-
-                        <!-- TÊN -->
-
-                        <h3>
-
-                            <?php echo $name; ?>
-
-                        </h3>
-
-
-
-                        <!-- GIÁ -->
-
-                        <p class="product-price">
-
-                            <?php echo $price; ?>₫ / kg
-
-                        </p>
-
-
-
-                        <!-- CHỌN MUA -->
-
-                        <button
-                            type="button"
-                            class="choose-product"
-                            data-id="<?php echo $id; ?>"
-                        >
-
-                            🛒 CHỌN MUA
-
-                        </button>
-
-
-                    </div>
-
-
-                <?php
-
-                }
-
-                ?>
-
-
-            </div>
-
-
-
-            <!-- XEM THÊM -->
-
-            <div class="view-more-products">
-
-                <a
-                    href="sanpham.php?category=trai-cay-nhap-khau"
-                >
-
-                    Xem thêm sản phẩm trái cây nhập khẩu
-
-                </a>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
 
 </main>
+
 
 
 <!-- FOOTER -->
@@ -979,6 +931,7 @@ $nhapKhauProducts = array_slice($products, $half)
 
 
         <div class="footer-grid">
+
 
 
             <!-- VỀ TRÁI CÂY MIỀN NAM -->
@@ -1128,16 +1081,6 @@ $nhapKhauProducts = array_slice($products, $half)
 
 </footer>
 
-
-
-<!-- BOOTSTRAP -->
-
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-></script>
-
-
-<!-- JAVASCRIPT -->
 
 <script src="index.js"></script>
 

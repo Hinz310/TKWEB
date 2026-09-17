@@ -75,3 +75,52 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+// XEM THÊM SẢN PHẨM
+document.addEventListener("DOMContentLoaded", function () {
+
+    const products = document.querySelectorAll(".category-product");
+    const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+    if (!loadMoreBtn || products.length === 0) {
+        return;
+    }
+
+    let visibleCount = 8;
+
+    // Ban đầu chỉ hiện 8 sản phẩm
+    products.forEach(function (product, index) {
+        if (index < visibleCount) {
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+    });
+
+    // Nếu chỉ có 8 sản phẩm trở xuống thì không cần nút
+    if (products.length <= visibleCount) {
+        loadMoreBtn.style.display = "none";
+    }
+
+    loadMoreBtn.addEventListener("click", function () {
+
+        // Mỗi lần hiện thêm 4
+        const nextCount = visibleCount + 4;
+
+        for (
+            let i = visibleCount;
+            i < nextCount && i < products.length;
+            i++
+        ) {
+            products[i].style.display = "block";
+        }
+
+        visibleCount = Math.min(nextCount, products.length);
+
+        // Chỉ mất nút khi ĐÃ hiện hết sản phẩm
+        if (visibleCount >= products.length) {
+            loadMoreBtn.style.display = "none";
+        }
+    });
+
+});
