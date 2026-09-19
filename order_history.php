@@ -32,6 +32,16 @@ function getOrderDetails($pdo, $order_id) {
 ?>
 
 <h2>Lịch Sử Đơn Hàng Của Bạn</h2>
+<a href="index.php" 
+    style="display: inline-block; 
+            margin: 15px 0; 
+            padding: 10px 20px; 
+            background-color: #3498db; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px;">
+    ← Quay lại trang chủ
+</a>
 
 <?php if (empty($orders)): ?>
     <p>Bạn chưa có đơn hàng nào trong hệ thống.</p>
