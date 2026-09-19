@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email    = trim($_POST["email"] ?? "");
     $mat_khau = $_POST["mat_khau"] ?? "";
 
-    // 1. Truy vấn tài khoản từ bảng users chuẩn
+    // 1. Truy vấn tài khoản từ bảng users
     $sql = "SELECT * FROM users WHERE email = ? OR username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $email, $email);
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $password_db = $nguoi_dung["password"] ?? $nguoi_dung["mat_khau"] ?? "";
 
-        // Kiểm tra mật khẩu mã hóa hoặc so sánh trực tiếp tài khoản test
+        // Kiểm tra mật khẩu mã hóa hoặc so sánh trực tiếp
         $is_valid_password = password_verify($mat_khau, $password_db) || ($mat_khau === $password_db);
 
         if ($is_valid_password) {
@@ -45,17 +45,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["role"]          = $role;
             $_SESSION["vai_tro"]       = $role;
 
-            // 3. Điều hướng người dùng
-            if (strtolower($role) === "admin" || strtolower($role) === "quản lý") {
-                if (file_exists("admin/index.php")) {
-                    header("Location: admin/index.php");
-                } else {
-                    header("Location: index.php");
-                }
+            // 3. Điều hướng người dùng (Đã sửa cú pháp if và đổi tên file chuyển hướng)
+            $role_clean = strtolower(trim($role));
+            if ($role_clean === "admin" || $role_clean === "quản lý" || $role_clean === "quan ly") {
+                // Chuyển hướng sang trang quản lý đơn hàng của Admin
+                header("Location: don-hang.php");
+                exit();
             } else {
+                // Khách hàng thông thường về Trang chủ
                 header("Location: index.php");
+                exit();
             }
-            exit();
 
         } else {
             $thong_bao = "<span style='color: red;'>Mật khẩu không đúng! Vui lòng kiểm tra lại.</span>";
